@@ -40,8 +40,6 @@ type GinJWTMiddleware struct {
 	// This means that the maximum validity timespan for a token is MaxRefresh + Timeout.
 	// Optional, defaults to 0 meaning not refreshable.
 	MaxRefresh time.Duration
-	
-	Optional str
 
 	// Callback function that should perform the authentication of the user based on userID and
 	// password. Must return true on success, false on failure. Required.
