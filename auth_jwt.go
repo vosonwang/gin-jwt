@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"gopkg.in/dgrijalva/jwt-go.v3"
+	"github.com/dgrijalva/jwt-go"
 )
 
 // MapClaims type that uses the map[string]interface{} for JSON decoding
@@ -40,6 +40,8 @@ type GinJWTMiddleware struct {
 	// This means that the maximum validity timespan for a token is MaxRefresh + Timeout.
 	// Optional, defaults to 0 meaning not refreshable.
 	MaxRefresh time.Duration
+	
+	Optional str
 
 	// Callback function that should perform the authentication of the user based on userID and
 	// password. Must return true on success, false on failure. Required.
@@ -166,6 +168,7 @@ var (
 type Login struct {
 	Username string `form:"username" json:"username" binding:"required"`
 	Password string `form:"password" json:"password" binding:"required"`
+	AccountType string `form:"type" json:"type"`
 }
 
 func (mw *GinJWTMiddleware) readKeys() error {
