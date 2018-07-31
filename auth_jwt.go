@@ -41,10 +41,10 @@ type GinJWTMiddleware struct {
 	// Optional, defaults to 0 meaning not refreshable.
 	MaxRefresh time.Duration
 
-	// Callback function that should perform the authentication of the user based on userID and
+	// Callback function that should perform the authentication of the user based on userName and
 	// password. Must return true on success, false on failure. Required.
 	// Option return user data, if so, user data will be stored in Claim Array.
-	Authenticator func(userID, password, LoginType string, c *gin.Context) (interface{}, bool)
+	Authenticator func(userName, password, LoginType string, c *gin.Context) (interface{}, bool)
 
 	// Callback function that should perform the authorization of the authenticated user. Called
 	// only after an authentication success. Must return true on success, false on failure.
