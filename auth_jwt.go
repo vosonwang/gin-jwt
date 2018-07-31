@@ -375,8 +375,8 @@ func (mw *GinJWTMiddleware) LoginHandler(c *gin.Context) {
 		}
 	}
 
-	if claims["id"] == nil {
-		claims["id"] = loginVals.Username
+	if claims["username"] == nil {
+		claims["username"] = loginVals.Username
 	}
 
 	expire := mw.TimeFunc().Add(mw.Timeout)
